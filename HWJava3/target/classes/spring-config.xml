@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+       <bean id="coffee" class="com.home3.Latte"/>
+       <bean id="cheeseCake" class="com.home3.CheeseCake"/>
+       <bean id="capp" class="com.home3.Cappuchino"/>
+       <bean id="chocko" class="com.home3.ChockoCake"/>
+       <bean id="superBarista" class="com.home3.SuperBarista">
+              <constructor-arg ref="coffee"/>
+              <property name="cake" ref="cheeseCake"/>
+       </bean>
+       <bean id="ssuperBarista" class="com.home3.SSuperBarista">
+              <property name="cakes">
+                     <list>
+                            <ref bean="cheeseCake"/>
+                            <ref bean="chocko"/>
+                     </list>
+              </property>
+              <property name="coffees">
+                     <list>
+                            <ref bean="capp"/>
+                            <ref bean="coffee"/>
+                     </list>
+              </property>
+       </bean>
+</beans>
