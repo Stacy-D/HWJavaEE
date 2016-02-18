@@ -22,8 +22,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="HelloSpringPr3" />
-        <module name="my-app" />
+        <module name="HWJavaEE3" />
       </profile>
     </annotationProcessing>
   </component>

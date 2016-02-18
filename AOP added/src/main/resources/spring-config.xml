@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+     http://www.springframework.org/schema/beans
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/context
+     http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop-3.0.xsd"
+       >
+       <context:component-scan base-package="com.home3"/>
+    <bean id="customer" class="com.home3.Customer"/>
+    <aop:config>
+        <aop:aspect ref="customer">
+            <aop:pointcut id="order" expression="execution(* com.home3.IBarista.makeCoffee(..))"/>
+            <aop:before
+                    pointcut-ref="order"
+                    method="makeAnOrder"/>
+            <aop:after
+                    pointcut-ref="order"
+                    method="payForCoffee"/>
+        </aop:aspect>
+    </aop:config>
+<aop:aspectj-autoproxy/>
+
+</beans>
